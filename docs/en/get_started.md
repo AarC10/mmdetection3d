@@ -276,8 +276,12 @@ We provide a [Dockerfile](https://github.com/open-mmlab/mmdetection3d/blob/dev-1
 
 ```shell
 # build an image with PyTorch 1.9, CUDA 11.1
-# If you prefer other versions, just modified the Dockerfile
-docker build -t mmdetection3d docker/
+# If you prefer other versions, modify docker/Dockerfile
+docker build -f docker/Dockerfile -t mmdetection3d .
+
+# include the heavier dataset-specific dependencies only when needed
+docker build --build-arg INSTALL_DATASET_DEPS=1 \
+  -f docker/Dockerfile -t mmdetection3d:full .
 ```
 
 Run it with:

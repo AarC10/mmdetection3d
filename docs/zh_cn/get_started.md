@@ -273,8 +273,12 @@ print(mmdet3d.__version__)
 
 ```shell
 # 基于 PyTorch 1.9，CUDA 11.1 构建镜像
-# 如果您想要其他版本，只需要修改 Dockerfile
-docker build -t mmdetection3d docker/
+# 如果您想要其他版本，只需要修改 docker/Dockerfile
+docker build -f docker/Dockerfile -t mmdetection3d .
+
+# 仅在需要 NuScenes、Lyft 或 Open3D 等较重依赖时再启用
+docker build --build-arg INSTALL_DATASET_DEPS=1 \
+  -f docker/Dockerfile -t mmdetection3d:full .
 ```
 
 用以下命令运行 Docker 镜像：
