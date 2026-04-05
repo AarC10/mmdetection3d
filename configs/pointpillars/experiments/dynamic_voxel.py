@@ -1,5 +1,7 @@
 _base_ = ['../pointpillars_hv_secfpn_8xb6-160e_kitti-3d-3class.py']
 
+# arxiv.org/abs/1910.06528
+
 # Pointpillars paper specifies .16 xy resolution
 # See pointpillars_hv_secfpn_kitti.py middle_encoder has 432 x 496
 # 432 * .16 = 69.12
